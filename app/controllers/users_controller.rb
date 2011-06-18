@@ -5,8 +5,9 @@ class UsersController < ApplicationController
 
 
   def show
-	@user = User.find(params[:id])
-	@title = @user.name
+    @user = User.find(params[:id])
+    @goals = @user.goals
+    @title = @user.name
   end		
 
   def new
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
+      redirect_to(home_path) unless current_user?(@user)
     end
 
 end

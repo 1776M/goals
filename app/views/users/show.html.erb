@@ -1,5 +1,19 @@
-<%= @user.name %>, <%= @user.email %>
 
-<h1>
-  <%= @user.name %>
-</h1>
+
+<table class="profile">
+  <tr>
+    <td class="main">
+	<%= @user.name %>, <%= @user.email %>	
+      <% unless @user.goals.empty? %>
+        <table class="goals" summary="User goals">
+          <%= render @goals %>
+        </table>
+      <% end %>
+    </td>
+    <td class="sidebar round">
+      <strong>Name</strong> <%= @user.name %><br />
+      <strong>URL</strong> <%= link_to user_path(@user), @user %><br />
+      <strong>Goals</strong> <%= @user.goals.count %>
+    </td>
+  </tr>
+</table>

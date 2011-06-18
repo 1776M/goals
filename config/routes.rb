@@ -2,6 +2,7 @@ Goals::Application.routes.draw do
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :goals, :only => [:create, :destroy, :show]
 
   match '/about',   :to => 'pages#about'
   match '/home',   :to => 'pages#home'
