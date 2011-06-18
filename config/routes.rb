@@ -4,12 +4,10 @@ Goals::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
 
   match '/about',   :to => 'pages#about'
-
+  match '/home',   :to => 'pages#home'
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
 	
-  root :to => 'pages#home'
-
 
  end
