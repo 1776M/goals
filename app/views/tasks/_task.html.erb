@@ -1,0 +1,13 @@
+<tr>
+  <td class="goal">
+    <span class="content"><%= task.content %></span>
+  </td>
+  <% if current_user?(task.goal.user) %>
+  <td>
+    <%= link_to "delete", task, :method => :delete,
+                                :confirm => "You sure?",
+                                :title => task.content %>
+  </td>
+  <br />
+  <% end %>
+</tr>

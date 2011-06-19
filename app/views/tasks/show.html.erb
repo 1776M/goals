@@ -1,0 +1,11 @@
+<table class="profile">
+  <tr>
+    <td class="main">
+      <% unless current_user.goals.tasks.empty? %>
+        <table class="goals" summary="User tasks">
+          <%= render @tasks %>
+        </table>
+      <% end %>
+    </td>
+  </tr>
+</table>

@@ -18,7 +18,10 @@ class GoalsController < ApplicationController
   end
 
   def show
-
+       @title = 'tasks'
+       @goal = Goal.find(params[:id])
+       @tasks = @goal.tasks
+	@task = Task.new if signed_in?      
   end
 
   private
