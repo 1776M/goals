@@ -6,15 +6,15 @@ class GoalsController < ApplicationController
     @goal  = current_user.goals.build(params[:goal])
     if @goal.save
       flash[:success] = "Goal created!"
-      redirect_to home_path
+      redirect_to home_path 
     else
       render home_path
     end
   end
 
   def destroy
-    @goal.destroy
-    redirect_back_or home_path
+    @goal.destroy    
+    redirect_back_or home_path 
   end
 
   def show
@@ -32,3 +32,5 @@ class GoalsController < ApplicationController
     end
 
 end
+
+

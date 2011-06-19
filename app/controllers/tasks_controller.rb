@@ -14,12 +14,14 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task.destroy
-    redirect_back_or home_path
+    @task = Task.find(params[:id])
+    Task.find(params[:id]).destroy
+    flash[:success] = "Task deleted"
+    redirect_to goal_path(@task.goal.id)
   end
 
   def show
-
+    @task = Task.find(params[:id])  
   end
  
   def index
@@ -30,8 +32,7 @@ class TasksController < ApplicationController
   private
   
     def authorized_user
-      @goal = Goal.find(params[:goal_id])
-      @task = @goal.tasks.find_by_id(params[:id])
+      @task = Task.find(params[:id])
       redirect_to 'index.html' if @task.nil?
     end
 
