@@ -1,6 +1,6 @@
 <tr>
   <td class="goal">
-    <span class="content" id="goal_content"><%= link_to goal.content, goal_path(goal.id) %></span>
+    <span class="content"><%= link_to goal.content, goal_path(goal.id) %></span>
   </td>
   <% if current_user?(goal.user) %>
   <td>

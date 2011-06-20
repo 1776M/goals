@@ -1,4 +1,5 @@
-<% if signed_in? %>
+<% if signed_in?  %>
+  <% if current_user.name == 'mandeep3' %>
   <table class="front" summary="For signed-in users">
     <tr>
       <td class="main">
@@ -8,8 +9,12 @@
       </td>
     </tr>
   </table>
+  <% end %>
 <%= render @tasks %>
 
+  <% if @tasks.count < 1%>
+    <p>There are no tasks for this goal</p>
+  <% end %>
 <% else %>
   <h1>Sample App</h1>
 

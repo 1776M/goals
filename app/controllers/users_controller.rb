@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+        before_filter :authorized_superadmin, :only => [:index] 
 	 before_filter :authenticate, :only => [:edit, :update]
 	 before_filter :correct_user, :only => [:edit, :update]
 
@@ -42,6 +42,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+   @users = User.all
+  end
+
   private
 
     def authenticate
@@ -51,6 +55,10 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(home_path) unless current_user?(@user)
+    end
+
+    def authorized_superadmin
+       redirect_to root_path unless current_user_superadmin(current_user) 
     end
 
 end

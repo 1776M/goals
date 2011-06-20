@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    redirect_to home_path
+    redirect_to 'http://reachmygoals.org:3000'
   end
 
 end
