@@ -29,6 +29,18 @@ class TasksController < ApplicationController
     @task  = @goal.tasks
   end
 
+  def finish
+       @task = Task.find(params[:id])
+       @task.update_attributes(:status => "done")
+       redirect_to goal_path(@task.goal.id)
+  end
+
+  def unfinish
+       @task = Task.find(params[:id])
+       @task.update_attributes(:status => "to do")
+       redirect_to goal_path(@task.goal.id)
+  end
+
   private
   
     def authorized_user

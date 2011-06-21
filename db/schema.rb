@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110618213308) do
+ActiveRecord::Schema.define(:version => 20110620203059) do
 
   create_table "goals", :force => true do |t|
     t.string   "content"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20110618213308) do
     t.integer  "goal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status",     :default => "to do"
   end
 
   add_index "tasks", ["created_at"], :name => "index_tasks_on_created_at"

@@ -3,7 +3,7 @@ Goals::Application.routes.draw do
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :goals, :only => [:create, :destroy, :show, :index] 
-  resources :tasks, :only => [:create, :destroy, :show, :index]
+  resources :tasks
   
 
   match '/about',   :to => 'pages#about'
@@ -11,7 +11,9 @@ Goals::Application.routes.draw do
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-	
 
- end
+  match '/tasks/:id/finish', :to => 'tasks#finish', :as => 'finish_task'
+  match '/tasks/:id/unfinish', :to => 'tasks#unfinish', :as => 'unfinish_task'
+
+end
 

@@ -8,6 +8,14 @@
                                 :confirm => "You sure?",
                                 :title => task.content %>
   </td>
+  <td><% if task.status=="to do" %>
+			<%=    link_to 'mark done', finish_task_path(task.id), :method => :post %>
+		<% else %>
+		       <%=	link_to 'un do', unfinish_task_path(task.id), :method => :post %>
+	       <% end %>
+              <%=task.status %>
+
+  </td>
   <% end %>
   <br />
 </tr>
