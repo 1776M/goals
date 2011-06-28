@@ -21,7 +21,9 @@ class GoalsController < ApplicationController
        @title = 'tasks'
        @goal = Goal.find(params[:id])
        @tasks = @goal.tasks
-	@task = Task.new if signed_in?      
+	@task = Task.new if signed_in?
+       @tasks_finished = @goal.task_finished(params[:id])
+	@tasks_unfinished = @goal.task_unfinished(params[:id])      
   end
 
   private

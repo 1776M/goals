@@ -10,7 +10,49 @@
     </tr>
   </table>
   <% end %>
-<%= render @tasks %>
+
+<h1>finished</h1>
+<% @tasks_finished.each do |tasks_finished| %>
+    <tr>
+    <td class="goal">
+        <span class="content"><%= tasks_finished.content %></span>
+    </td>
+        <% if current_user?(tasks_finished.goal.user) || current_user.name=='mandeep3' %>
+    <td>
+        <%= link_to "delete", tasks_finished, :method => :delete,
+                                              		 :confirm => "You sure?",
+                                		               :title => tasks_finished.content %>
+    </td>
+    <td>
+	<%=    link_to 'mark to do', unfinish_task_path(tasks_finished.id), :method => :post %>      
+    </td>
+  <% end %>
+  <br />
+  </tr>
+<% end %>
+
+<h1>unfinished</h1>
+<% @tasks_unfinished.each do |tasks_unfinished| %>
+    <tr>
+    <td class="goal">
+        <span class="content"><%= tasks_unfinished.content %></span>
+    </td>
+        <% if current_user?(tasks_unfinished.goal.user) || current_user.name=='mandeep3' %>
+    <td>
+        <%= link_to "delete", tasks_unfinished, :method => :delete,
+                                              		  :confirm => "You sure?",
+                                		                :title => tasks_unfinished.content %>
+    </td>
+    <td>
+	<%=    link_to 'mark done', finish_task_path(tasks_unfinished.id), :method => :post %>      
+    </td>
+  <% end %>
+  <br />
+  </tr>
+<% end %>
+
+
+
 
   <% if @tasks.count < 1%>
     <p>There are no tasks for this goal</p>

@@ -8,4 +8,5 @@ class Task < ActiveRecord::Base
  	validates :goal_id, :presence => true
 
 	default_scope :order => 'tasks.created_at DESC'
+
 end
