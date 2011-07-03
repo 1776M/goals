@@ -9,6 +9,50 @@
   </table>
 <%= render @goals %>
 
+<h1>finished</h1>
+
+                <% @goals_finished.each do |goals_finished| %>
+               <tr>
+               <td class="goal">
+                  <span class="content"><%= link_to goals_finished.content, goal_path(goals_finished.id) %></span>
+               </td>
+                  <% if current_user?(goals_finished.user) || current_user.name=='mandeep3' %>
+               <td>
+                  <%= link_to "delete", goals_finished, :method => :delete,
+                                              		 :confirm => "You sure?",
+                                		               :title => goals_finished.content %>
+              </td>
+              <td>
+	           <%=    link_to 'mark to do', unfinish_goal_path(goals_finished.id), :method => :post %>      
+              </td>
+                 <% end %>
+                 <br />
+              </tr>
+              <% end %>
+
+<h1>unfinished</h1>
+<% @goals_unfinished.each do |goals_unfinished| %>
+    <tr>
+    <td class="goal">
+        <span class="content"><%= link_to goals_unfinished.content, goal_path(goals_unfinished.id) %></span>
+    </td>
+        <% if current_user?(goals_unfinished.user) || current_user.name=='mandeep3' %>
+    <td>
+        <%= link_to "delete", goals_unfinished, :method => :delete,
+                                              		  :confirm => "You sure?",
+                                		                :title => goals_unfinished.content %>
+    </td>
+    <td>
+	<%=    link_to 'mark done', finish_goal_path(goals_unfinished.id), :method => :post %>      
+    </td>
+  <% end %>
+  <br />
+  </tr>
+<% end %>
+
+
+
+
 <% else %>
   <h1>Sample App</h1>
 

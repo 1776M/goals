@@ -14,6 +14,9 @@ Goals::Application.routes.draw do
 
   match '/tasks/:id/finish', :to => 'tasks#finish', :as => 'finish_task'
   match '/tasks/:id/unfinish', :to => 'tasks#unfinish', :as => 'unfinish_task'
+  
+  match '/goals/:id/finish', :to => 'goals#finish', :as => 'finish_goal'
+  match '/goals/:id/unfinish', :to => 'goals#unfinish', :as => 'unfinish_goal'
 
 end
 

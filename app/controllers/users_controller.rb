@@ -5,9 +5,11 @@ class UsersController < ApplicationController
 
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id) if signed_in?
     @goals = @user.goals
     @title = @user.name
+    @goals_finished = current_user.goal_finished(current_user.id) if signed_in?
+    @goals_unfinished = current_user.goal_unfinished(current_user.id) if signed_in? 
   end		
 
   def new

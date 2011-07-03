@@ -1,6 +1,6 @@
 class Goal < ActiveRecord::Base
 
-	attr_accessible :content
+	attr_accessible :content, :status
 
 	belongs_to :user
 	has_many :tasks, :dependent => :destroy

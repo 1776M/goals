@@ -35,6 +35,14 @@ class User < ActiveRecord::Base
     (user && user.salt == cookie_salt) ? user : nil
   end
 
+  def goal_finished(id)
+      total = Goal.find_by_sql(["Select * from Goals where status='done' and user_id=?", id])	
+  end
+
+  def goal_unfinished(id)
+      total = Goal.find_by_sql(["Select * from Goals where status='to do' and user_id=?", id])
+  end
+
  private
 
     def encrypt_password

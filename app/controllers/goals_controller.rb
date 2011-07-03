@@ -26,6 +26,19 @@ class GoalsController < ApplicationController
 	@tasks_unfinished = @goal.task_unfinished(params[:id])      
   end
 
+  def finish
+       @goal = Goal.find(params[:id])
+       @goal.update_attributes(:status => "done")
+       redirect_to home_path
+  end
+
+  def unfinish
+       @goal = Goal.find(params[:id])
+       @goal.update_attributes(:status => "to do")
+       redirect_to home_path
+  end
+
+
   private
   
     def authorized_user
