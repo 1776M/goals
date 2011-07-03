@@ -3,7 +3,7 @@
   <table class="front" summary="For signed-in users">
     <tr>
       <td class="main">
-        <h1 class="goal">What's up?</h1>
+        <h1 class="goal">add a task</h1>
         <%= render 'shared/task_form' %>
  
       </td>
@@ -11,7 +11,8 @@
   </table>
   <% end %>
 
-<h1>finished</h1>
+<h1>finished tasks</h1>
+<table>
 <% @tasks_finished.each do |tasks_finished| %>
     <tr>
     <td class="goal">
@@ -24,14 +25,14 @@
                                 		               :title => tasks_finished.content %>
     </td>
     <td>
-	<%=    link_to 'mark to do', unfinish_task_path(tasks_finished.id), :method => :post %>      
+	<%=    link_to 'incomplete', unfinish_task_path(tasks_finished.id), :method => :post %>      
     </td>
   <% end %>
-  <br />
   </tr>
 <% end %>
-
-<h1>unfinished</h1>
+</table>
+<table>
+<h1>unfinished tasks</h1>
 <% @tasks_unfinished.each do |tasks_unfinished| %>
     <tr>
     <td class="goal">
@@ -44,12 +45,12 @@
                                 		                :title => tasks_unfinished.content %>
     </td>
     <td>
-	<%=    link_to 'mark done', finish_task_path(tasks_unfinished.id), :method => :post %>      
+	<%=    link_to 'completed', finish_task_path(tasks_unfinished.id), :method => :post %>      
     </td>
   <% end %>
-  <br />
   </tr>
 <% end %>
+</table>
 
 
 

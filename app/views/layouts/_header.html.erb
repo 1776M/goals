@@ -1,17 +1,16 @@
 <header>
   <% logo = image_tag("logo.png", :alt => "Sample App", :class => "round") %>
-  <%= link_to logo, home_path %>
+  <br />
+  <br />
   <nav class="round">
     <ul>
-      <li><%= link_to "Home", home_path %></li>
+      <li><%= link_to "Goals", home_path %></li>
       <% if signed_in? %>
-      <li><%= link_to "Profile", current_user %></li>
       <li><%= link_to "Settings", edit_user_path(current_user) %></li>
           <% if current_user.name=='mandeep3'  %>
               <li><%= link_to "Users", users_path %></li>	
           <% end %>	
       <% end %>
-      <li><%= link_to "About", about_path %></li>
       <% if signed_in? %>
       <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
       <% else %>

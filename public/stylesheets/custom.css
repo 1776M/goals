@@ -3,7 +3,7 @@
 }
 
 body {
-  background: #cff;
+  background: black;
 }
 
 header {
@@ -124,18 +124,20 @@ table.goals {
 
 table.goals tr {
   height: 70px;
+  width: 200px;
 }
 
 table.goals tr td.gravatar {
   border-top: 1px solid #ccc;
   vertical-align: top;
-  width: 50px;
+  width: 200px;
 }
 
 table.goals tr td.goal {
   border-top: 1px solid #ccc;
   vertical-align: top;
   padding-top: 10px;
+  width: 200px;
 }
 
 table.goals tr td.goal span.timestamp {
